@@ -15,6 +15,6 @@ You could use:
 
 ## How to start
 
-1. change directory into `./introTopics/examples/whatIsAComponent/super-mega-app`
+1. change directory into `./introTopics/examples/componentState/super-mega-app`
 2. run `yarn install` to install dependencies
 3. run `yarn start` to start the app!
