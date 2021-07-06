@@ -126,6 +126,8 @@ const SimpleComponent = () => {
 export default SimpleComponent;
 ```
 
+note: briefly explain what we're looking at here, comment on the demo coming up shortly!
+
 ---
 
 ### What is a component?
@@ -149,6 +151,9 @@ const ComponentList = () => {
 export default ComponentList;
 ```
 
+note: What is different here to the component we just looked at? 
+
+
 ---
 
 ### What is a component?
@@ -169,6 +174,10 @@ const ComponentWithProps = (props) => {
 
 export default ComponentWithProps;
 ```
+
+note: You could also think of props as 'function parameters'
+note: props are things that get passed into your component, and your component can then make use of them
+note: this example takes a 'name' as a prop, which it then displays in a heading element
 
 ---
 
@@ -193,6 +202,12 @@ const ComponentList = () => {
 export default ComponentList;
 ```
 
+note: This is an example of how you would then pass a prop into a component.
+note: You can pass more complex data types as props (e.g. objects, arrays, etc)
+
+note: The demo will show you how you can use an array to 'generate' HTML
+note: It does this updating this example such that it uses an array of names.
+
 ---
 
 ### Demo Time!
@@ -205,7 +220,11 @@ note: ./introTopics/examples/whatIsAComponent contains the practical demo 'What 
 
 - State within react is just data. {.fragment .fade-down}
 - Often used to make components dynamic {.fragment .fade-down}
-- Properties that control behaviour{.fragment .fade-down}
+- Properties that control behaviour {.fragment .fade-down}
+
+note: There is a lot to react state, this is a simple representation of it that should help you get to grips with it
+note: updating and changing state has consequences, React will then ...react... to changes made to state.
+note: there are different ways of handling/representing state within react. We will look at one common way!
 
 ---
 
@@ -215,6 +234,34 @@ Examples of state:
 - Number of times a button is clicked {.fragment .fade-down}
 - Name of a person typed into a form {.fragment .fade-down}
 - The time that the next train arrives {.fragment .fade-down}
+
+note: some tangible things you might want to represent in your web app
+note: if a component might be dependent on a bit of data, then it could be something that is represented as state
+
+---
+
+### React.useState();
+
+React provides a method to declare and update state {.fragment .fade-down}
+
+```jsx {.fragment .fade-down}
+import React, { useState } from 'React'
+
+// ...
+const initialValue = 'some intial value'
+const [currentValue, setCurrentValue] = useState(initialValue);
+// ...
+```
+
+note: `currentValue` represents the Current Value of the state
+
+note: `setCurrentValue` is a method to update `currentValue`
+
+note: `useState` takes an `initialValue` to define what the first value of `currentValue` should be
+
+note: this `useState` method has to be used inside of a React Component.
+
+note: when the value of `currentValue` is updated, using the `setCurrentValue` method, it causes React to 're-render' parts of the page that would be affected by the value change.
 
 ---
 
@@ -228,6 +275,12 @@ We will need a component to do following: {.fragment .fade-down}
   - Display the number of clicks {.fragment .fade-down}
   - Let the user click a button {.fragment .fade-down}
   - Connect the two things together {.fragment .fade-down}
+
+note: Like all things engineering, there are 1,000,001 ways to do things!
+note: this example will try and build on the things we have just looked at and introduce some 'state'
+note: you could do the whole thing in a single component, but lets stick with making things small!
+
+note: Point out that again there is gonna be a practical demo of this!
 
 ---
 
@@ -246,6 +299,10 @@ const NumberDisplay = (props) => {
 export default NumberDisplay
 ```
 
+note: this component take a 'count' as a prop and just renders it inside a `div` element.
+note: it doesn't do anything other than that
+note: if something else in the app wanted to display a number, it could re-use this
+
 ---
 
 #### A Button component we can click
@@ -261,6 +318,16 @@ const CounterButton = (props) => {
 
 export default CounterButton
 ```
+
+note: this component takes a single 'onClick' prop.
+note: the onClick prop is to be function that is called when the button element is clicked.
+
+note: this component really is just wrapping a standard HTML button element
+note: if there were other more complex behaviours, then it might make more sense to do this
+
+note: if there were other places that wanted a button that reacted upon being clicked, then this could be re-used!
+note: if for some reason everywhere in the app needed to change from being `type="button"` to `type="submit"`
+note: then only this component would need updating! everywhere using it would automatically be updated 😁
 
 ---
 
@@ -285,6 +352,20 @@ const Counter = () => {
 
 export default Counter
 ```
+
+note: This component is where the magic happens!
+note: it makes use of our two other components
+note: but most crucially it utilises the 'useState' react hook.
+
+note: The useState method returns an array of 2 things:
+note: The current value
+note: a method to update the current value
+
+note: A handle click method uses the setNumberOfClicks method taken from the hook
+note: it sets the current value to be the previous + 1
+
+note: the numberOfClicks value is passed to the number display component
+note: the handleClick method id passed as a prop to the CounterButton
 
 ---
 
