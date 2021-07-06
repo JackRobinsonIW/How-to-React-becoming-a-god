@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
+import CounterButton from './CounterButton'
+import NumberDisplay from './NumberDisplay'
 
 const Counter = () => {
 
-  const [numberOfClicks, setNumberOfClicks] = useState(0)
+  // const [numberOfClicks, setNumberOfClicks] = useState(0)
 
   const handleClick = () => {
-    setNumberOfClicks(numberOfClicks + 1)
+    // setNumberOfClicks(numberOfClicks + 1)
   }
 
   return (
-    <div>counter</div>
+    <>
+      <NumberDisplay count={0} />
+      {/* <NumberDisplay count={numberOfClicks} /> */}
+      <CounterButton onClick={handleClick} />
+    </>
   )
 }
 

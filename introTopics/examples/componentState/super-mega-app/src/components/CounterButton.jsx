@@ -1,8 +1,9 @@
 import React from 'react'
 
-const CounterButton = () => {
+const CounterButton = (props) => {
+  const { onClick } = props
   return (
-    <div>counter-button</div>
+    <button type="button" onClick={onClick}>Count!</button>
   )
 }
 

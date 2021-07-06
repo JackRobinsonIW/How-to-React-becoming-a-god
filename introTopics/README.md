@@ -110,7 +110,7 @@ note: introTopics/examples/createReactApp contains the practical demo for this s
 
 ---
 
-## What is a component?
+### What is a component?
 
 A really small component could be a `hello world` header
 
@@ -128,7 +128,7 @@ export default SimpleComponent;
 
 ---
 
-## What is a component?
+### What is a component?
 
 Components can be used inside of other components!
 
@@ -151,7 +151,7 @@ export default ComponentList;
 
 ---
 
-## What is a component?
+### What is a component?
 
 Components can have `props`
 
@@ -172,7 +172,7 @@ export default ComponentWithProps;
 
 ---
 
-## What is a component?
+### What is a component?
 
 You can then pass `props` into a component
 
@@ -197,7 +197,7 @@ export default ComponentList;
 
 ### Demo Time!
 
-note: introTopics/examples/whatIsAComponent contains the practical demo 'What is a component' 
+note: ./introTopics/examples/whatIsAComponent contains the practical demo 'What is a component' 
 
 ---
 
@@ -209,9 +209,85 @@ note: introTopics/examples/whatIsAComponent contains the practical demo 'What is
 
 ---
 
-## Component State
+### Component State
 
 Examples of state:
 - Number of times a button is clicked {.fragment .fade-down}
 - Name of a person typed into a form {.fragment .fade-down}
 - The time that the next train arrives {.fragment .fade-down}
+
+---
+
+### Component State Example
+
+Lets look at a simple example of React State in use! {.fragment .fade-down}
+
+> A component that will count the number of times a button is clicked {.fragment .fade-down}
+
+We will need a component to do following: {.fragment .fade-down}
+  - Display the number of clicks {.fragment .fade-down}
+  - Let the user click a button {.fragment .fade-down}
+  - Connect the two things together {.fragment .fade-down}
+
+---
+
+#### Display the number of clicks
+
+```jsx {.fragment .fade-down}
+import React from 'react'
+
+const NumberDisplay = (props) => {
+  const { count } = props
+  return (
+    <div>{count}</div>
+  )
+}
+
+export default NumberDisplay
+```
+
+---
+
+#### A Button component we can click
+```jsx {.fragment .fade-down}
+import React from 'react'
+
+const CounterButton = (props) => {
+  const { onClick } = props
+  return (
+    <button type="button" onClick={onClick}>Count!</button>
+  )
+}
+
+export default CounterButton
+```
+
+---
+
+#### A Component to connect it all up!
+
+Making use of our two other components.
+
+```jsx {.fragment .fade-down}
+import React, { useState } from 'react'
+import CounterButton from './CounterButton'
+import NumberDisplay from './NumberDisplay'
+
+const Counter = () => {
+  const [numberOfClicks, setNumberOfClicks] = useState(0)
+  
+  const handleClick = () => setNumberOfClicks(numberOfClicks + 1)
+  return (<>
+    <NumberDisplay count={numberOfClicks} />
+    <CounterButton onClick={handleClick} />
+  </>)
+}
+
+export default Counter
+```
+
+---
+
+### Demo Time!
+
+note: ./introTopics/examples/componentState contains the practical demo 'What is a component' 

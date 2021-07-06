@@ -1,8 +1,9 @@
 import React from 'react'
 
-const NumberDisplay = () => {
+const NumberDisplay = (props) => {
+  const { count } = props
   return (
-    <div>number-display</div>
+    <div>{count}</div>
   )
 }
 
