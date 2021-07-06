@@ -14,7 +14,7 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=evilz.v
 ```
 
 3. Open Presentation Markdown file of your choice (e.g. `introTopics/README.md`)
-4. `ctrl-shif-p`
+4. `ctrl-shift-p`
 5. `revealjs: Show presentation by side`
 
 ## How to View Examples
