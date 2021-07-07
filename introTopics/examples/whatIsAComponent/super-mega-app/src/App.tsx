@@ -1,4 +1,3 @@
-import React from 'react';
 import SimpleComponent from './components/SimpleComponent';
 import ComponentList from './components/ComponentList';
 import ComponentWithProps from './components/ComponentWithProps';

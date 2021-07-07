@@ -1,4 +1,3 @@
-import React from 'react';
 import SimpleComponent from './SimpleComponent';
 
 const ComponentList = () => {

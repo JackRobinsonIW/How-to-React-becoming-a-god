@@ -1,6 +1,3 @@
-
-
-import React from 'react';
 import ComponentWithProps from './ComponentWithProps';
 
 type ComponentListProps = {
