@@ -12,7 +12,7 @@ title: "Intro to React Workshop"
 
 ## What is React?
 
-A front-end framework with a heavy focused on: {.fragment .fade-down}
+A front-end library with a heavy focused on: {.fragment .fade-down}
   - Composition of Components {.fragment .fade-down}
   - Developer Experience {.fragment .fade-down}
 
@@ -40,7 +40,7 @@ note: The composition of components simply refers to the idea that you can decla
 
 ### Developer Experience
 
-- Support for multiple programming paradigms  {.fragment .fade-down}
+- Support for multiple programming paradigms {.fragment .fade-down}
 - Browser Developer Tools {.fragment .fade-down}
 - Quickstart toolchains {.fragment .fade-down}
 - A whole world of open source goodness {.fragment .fade-down}
@@ -48,9 +48,10 @@ note: The composition of components simply refers to the idea that you can decla
   - Testing utilities {.fragment .fade-down}
   - Component Libraries! {.fragment .fade-down}
 
-note: Being a framework primarily for the development of Facebook, there is a vested interest in ensuring productiveity
+note: Being a library primarily for the development of Facebook, there is a vested interest in ensuring productivity
 note: There is great tooling, and solid principles surrounding React.
 note: From Browser development tools, to supporting multiple programming paradigms, to other open source toolings, React really can be nice to work with.
+note: Being a part of the Javascript ecosystem means less code for you to write - why reinvent the wheel?
 
 ---
 
@@ -63,6 +64,11 @@ Use a quickstart tool! {.fragment .fade-down}
 It's as easy as: {.fragment .fade-down}
 ```sh {.fragment .fade-down}
 npx create-react-app app-name --template typescript
+```
+
+Or for a plain Javascript version: {.fragment .fade-down}
+```sh {.fragment .fade-down}
+npx create-react-app app-name
 ```
 
 note: you will need to have Node.js installed (with npm)
@@ -82,13 +88,14 @@ super-mega-app
 ├── public
 ├── src
 │   ├── App.css     # default CSS applied to the app component
-│   ├── App.js      # An initial Component that is set up
-│   ├── App.test.js # A test file for the app component
+│   ├── App.tsx      # An initial Component that is set up
+│   ├── App.test.tsx # A test file for the app component
 │   ├── index.css   # base CSS applied globally
-│   ├── index.js    # the 'root' of the whole app!
+│   ├── index.tsx    # the 'root' of the whole app!
 │   ├── logo.svg
-│   ├── reportWebVitals.js
-│   └── setupTests.js
+│   ├── react-app-env.d.ts    
+│   ├── reportWebVitals.ts
+│   └── setupTests.ts
 └── yarn.lock
 ```
 
@@ -103,10 +110,13 @@ note: introTopics/examples/createReactApp contains the practical demo for this s
 ## What is a component?
 
 - A self-contained and reusable bit of code {.fragment .fade-down}
-- a discrete aspect of the app {.fragment .fade-down}
-  - A Submit Button {.fragment .fade-down}
+  - A Button {.fragment .fade-down}
+  - A Form Field {.fragment .fade-down}
+  - A Table Cell {.fragment .fade-down}
+- A discrete aspect of the app composed of smaller components{.fragment .fade-down}
+  - A navigation bar {.fragment .fade-down}
   - A Table of Results {.fragment .fade-down}
-  - A Section of a Form {.fragment .fade-down}
+  - A Section of a Form composed of multiple fields {.fragment .fade-down}
 
 ---
 
@@ -242,7 +252,7 @@ React provides a method to declare and update state {.fragment .fade-down}
 import { useState } from 'React'
 
 // ...
-const initialValue = 'some intial value'
+const initialValue = 'some intial value';
 const [currentValue, setCurrentValue] = useState(initialValue);
 // ...
 ```
