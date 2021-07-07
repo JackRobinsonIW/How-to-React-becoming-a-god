@@ -1,6 +1,10 @@
 import React from 'react'
 
-const CounterButton = (props) => {
+type CounterButtonProps = {
+  onClick: () => unknown;
+}
+
+const CounterButton = (props: CounterButtonProps) => {
   const { onClick } = props
   return (
     <button type="button" onClick={onClick}>Count!</button>
