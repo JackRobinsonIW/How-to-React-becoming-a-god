@@ -372,3 +372,79 @@ note: the handleClick method id passed as a prop to the CounterButton
 ### Demo Time!
 
 note: ./introTopics/examples/componentState contains the practical demo 'What is a component' 
+
+---
+
+## Styling a Component
+
+There are a few ways to style components:
+- Using inline styles {.fragment .fade-down}
+- Using traditional stylesheets {.fragment .fade-down}
+- Using CSS-in-JS {.fragment .fade-down}
+
+---
+
+### Inline Styles
+
+You can style components by passing CSS rules inline via the `styles` prop:
+
+```tsx {.fragment .fade-down}
+import React from 'react'
+
+const SimpleComponent = () => {
+  return (
+    <h1 styles={{ color="red" }}>Hello World!</h1>
+  )
+}
+```
+
+---
+
+### Traditional Stylesheets
+
+```css {.fragment .fade-down}
+.red {
+  color: red;
+}
+```
+
+```tsx {.fragment .fade-down}
+import React from 'react';
+import './SimpleComponent.css';
+
+const SimpleComponent = () => {
+  return (
+    <h1 className="red">Hello World!</h1>
+  )
+}
+```
+
+---
+
+### CSS-in-JS
+
+```tsx {.fragment .fade-down}
+export default createUseStyles({
+  red: {
+    color: 'red';
+  }
+});
+```
+
+```tsx {.fragment .fade-down}
+import styles from './SimpleComponent.css';
+
+const SimpleComponent = () => {
+  return (
+    <h1 className={classes.red}>Hello World!</h1>
+  )
+}
+```
+
+---
+
+### So why CSS-in-JS?
+
+- Local Scoping - Uniquely generated CSS classes {.fragment .fade-down}
+- Composition using standard Javascript structures (variables, objects, arrays etc.) {.fragment .fade-down}
+- Uniquely generated CSS classes per component {.fragment .fade-down}
