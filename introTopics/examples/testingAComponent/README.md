@@ -17,4 +17,4 @@ You could use:
 
 1. change directory into `./introTopics/examples/testingAComponent/super-mega-app`
 2. run `yarn install` to install dependencies
-3. run `yarn start` to start the app!
+3. run `yarn test` to run all the tests!
