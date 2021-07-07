@@ -125,8 +125,6 @@ note: introTopics/examples/createReactApp contains the practical demo for this s
 A really small component could be a `hello world` header
 
 ```jsx {.fragment .fade-down}
-import React from 'react'
-
 const SimpleComponent = () => {
   return (
     <h1>Hello World!</h1>
@@ -145,7 +143,6 @@ note: briefly explain what we're looking at here, comment on the demo coming up 
 Components can be used inside of other components!
 
 ```jsx {.fragment .fade-down}
-import React from 'react';
 import SimpleComponent from './SimpleComponent';
 
 const ComponentList = () => {
@@ -173,9 +170,11 @@ Components can have `props`
 (Similar to a HTML element's attributes)
 
 ```jsx {.fragment .fade-down}
-import React from 'react'
+type ComponentWithPropsProps = {
+  name: string;
+}
 
-const ComponentWithProps = (props) => {
+const ComponentWithProps = (props: ComponentWithPropsProps) => {
   const { name } = props;
   return (
     <h1>Hello {name}!</h1>
@@ -196,9 +195,11 @@ note: this example takes a 'name' as a prop, which it then displays in a heading
 You can then pass `props` into a component
 
 ```jsx {.fragment .fade-down}
-import React from 'react';
 import ComponentWithProps from './ComponentWithProps';
 
+type ComponentListProps = {
+  names: string[]
+}
 const ComponentList = () => {
   return (
     <li>
@@ -208,7 +209,6 @@ const ComponentList = () => {
     </li>
   )
 }
-
 export default ComponentList;
 ```
 
@@ -297,9 +297,11 @@ note: Point out that again there is gonna be a practical demo of this!
 #### Display the number of clicks
 
 ```jsx {.fragment .fade-down}
-import React from 'react'
+type NumberDisplayProps = {
+  count: number;
+}
 
-const NumberDisplay = (props) => {
+const NumberDisplay = (props: NumberDisplayProps) => {
   const { count } = props
   return (
     <div>{count}</div>
@@ -317,9 +319,11 @@ note: if something else in the app wanted to display a number, it could re-use t
 
 #### A Button component we can click
 ```jsx {.fragment .fade-down}
-import React from 'react'
+type CounterButtonProps = {
+  onClick: () => void;
+}
 
-const CounterButton = (props) => {
+const CounterButton = (props: CounterButtonProps) => {
   const { onClick } = props
   return (
     <button type="button" onClick={onClick}>Count!</button>
@@ -345,21 +349,21 @@ note: then only this component would need updating! everywhere using it would au
 
 Making use of our two other components.
 
-```jsx {.fragment .fade-down}
-import React, { useState } from 'react'
+```jsx 
+import { useState } from 'react';
 import CounterButton from './CounterButton'
 import NumberDisplay from './NumberDisplay'
 
 const Counter = () => {
   const [numberOfClicks, setNumberOfClicks] = useState(0)
-  
-  const handleClick = () => setNumberOfClicks(numberOfClicks + 1)
+  const handleClick = () => {
+    setNumberOfClicks(numberOfClicks + 1)
+  }
   return (<>
     <NumberDisplay count={numberOfClicks} />
     <CounterButton onClick={handleClick} />
   </>)
 }
-
 export default Counter
 ```
 

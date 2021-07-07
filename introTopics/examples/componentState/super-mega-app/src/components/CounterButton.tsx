@@ -1,5 +1,5 @@
 type CounterButtonProps = {
-  onClick: () => unknown;
+  onClick: () => void;
 }
 
 const CounterButton = (props: CounterButtonProps) => {
