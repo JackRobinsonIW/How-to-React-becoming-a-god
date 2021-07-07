@@ -3,7 +3,11 @@
 import React from 'react';
 import ComponentWithProps from './ComponentWithProps';
 
-const ComponentList = (props) => {
+type ComponentListProps = {
+  names: string[]
+}
+
+const ComponentList = (props: ComponentListProps) => {
   const { names } = props;
   return (
     <li>

@@ -1,11 +1,13 @@
+import React from 'react';
 import SimpleComponent from './components/SimpleComponent';
 import ComponentList from './components/ComponentList';
 import ComponentWithProps from './components/ComponentWithProps';
 import ComponentListWithProps from './components/ComponentListWithProps';
+
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
