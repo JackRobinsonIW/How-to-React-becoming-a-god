@@ -62,7 +62,7 @@ Use a quickstart tool! {.fragment .fade-down}
 
 It's as easy as: {.fragment .fade-down}
 ```sh {.fragment .fade-down}
-npx create-react-app app-name
+npx create-react-app app-name --template typescript
 ```
 
 note: you will need to have Node.js installed (with npm)

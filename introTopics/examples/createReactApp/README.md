@@ -16,7 +16,7 @@ Essentially follow the guide on React's own site:
 - https://reactjs.org/docs/create-a-new-react-app.html
 
 1. Ensure you are in the `./introTopics/examples/createReactApp` directory
-2. run `npx create-react-app super-mega-app`
+2. run `npx create-react-app super-mega-app --template typescript`
 3. Wait for the download/automatic setup to run!
 4. Change directory into your app (`cd super-mega-app)
 5. run `yarn start` 
