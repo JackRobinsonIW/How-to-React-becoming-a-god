@@ -388,7 +388,7 @@ There are a few ways to style components:
 
 You can style components by passing CSS rules inline via the `styles` prop:
 
-```tsx {.fragment .fade-down}
+```jsx {.fragment .fade-down}
 import React from 'react'
 
 const SimpleComponent = () => {
@@ -408,7 +408,7 @@ const SimpleComponent = () => {
 }
 ```
 
-```tsx {.fragment .fade-down}
+```jsx {.fragment .fade-down}
 import React from 'react';
 import './SimpleComponent.css';
 
@@ -423,7 +423,7 @@ const SimpleComponent = () => {
 
 ### CSS-in-JS
 
-```tsx {.fragment .fade-down}
+```jsx {.fragment .fade-down}
 export default createUseStyles({
   red: {
     color: 'red';
@@ -431,14 +431,14 @@ export default createUseStyles({
 });
 ```
 
-```tsx {.fragment .fade-down}
-import styles from './SimpleComponent.css';
+```jsx {.fragment .fade-down}
+import styles from "./CSSInJSStyledComponent.css";
 
-const SimpleComponent = () => {
-  return (
-    <h1 className={classes.red}>Hello World!</h1>
-  )
-}
+const CSSInJSStyledComponent = () => {
+  const classes = styles();
+
+  return <h1 className={classes.red}>Hello World!</h1>;
+};
 ```
 
 ---
@@ -448,3 +448,12 @@ const SimpleComponent = () => {
 - Local Scoping - Uniquely generated CSS classes {.fragment .fade-down}
 - Composition using standard Javascript structures (variables, objects, arrays etc.) {.fragment .fade-down}
 - Uniquely generated CSS classes per component {.fragment .fade-down}
+  - Prevents CSS rule collisions
+- Compiled resulting in reduced file size
+
+---
+
+### Demo Time!
+
+note: ./introTopics/examples/componentStyling contains the practical demo
+note: Inspect the generated HTML to see the behavior of each

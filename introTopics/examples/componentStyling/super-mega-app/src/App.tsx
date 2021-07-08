@@ -1,10 +1,14 @@
-import SimpleComponent from './components/SimpleComponent';
-import './App.css';
+import "./App.css";
+import CSSInJSStyledComponent from "./components/CSSInJSStyledComponent";
+import CSSStyledComponent from "./components/CSSStyledComponent";
+import InlineStyledSimpleComponent from "./components/InlineStyledSimpleComponent";
 
 function App() {
   return (
     <div className="App">
-      <SimpleComponent />
+      <CSSStyledComponent />
+      <InlineStyledSimpleComponent />
+      <CSSInJSStyledComponent />
     </div>
   );
 }
