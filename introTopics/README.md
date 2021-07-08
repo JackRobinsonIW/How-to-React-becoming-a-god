@@ -147,11 +147,11 @@ import SimpleComponent from './SimpleComponent';
 
 const ComponentList = () => {
   return (
-    <li>
+    <ul>
       <SimpleComponent />
       <SimpleComponent />
       <SimpleComponent />
-    </li>
+    </ul>
   )
 }
 
@@ -457,3 +457,154 @@ const CSSInJSStyledComponent = () => {
 
 note: ./introTopics/examples/componentStyling contains the practical demo
 note: Inspect the generated HTML to see the behavior of each
+
+---
+
+## Testing!
+
+- There are a few really good libaries to help {.fragment .fade-down}
+- `create-react-app` sets all of this up for you {.fragment .fade-down}
+
+note: This isn't going to go into to much details about principles of testing
+note: But it will show you how you can get started on unit testing React components
+note: We will drop some links in for anyone more interested in testing!
+
+---
+
+### Testing Components!
+
+What is the aim when testing react components?
+
+> Verifying Behaviours and Interactions
+
+note: Testing React components is the same as testing anything really
+note: We want to test that our component behaves as it should
+note: and that it interacts with things as expected.
+
+note: Because React is UI, and UI is very visual, it helps to have tools that let you make assertions against 
+
+---
+
+### Testing the Counter Component
+
+There are 3 components here to test: {.fragment .fade-down}
+1. NumberDisplay.tsx {.fragment .fade-down}
+2. CounterButton.tsx {.fragment .fade-down}
+3. Counter.tsx {.fragment .fade-down}
+
+Lets create 3 test files to write our tests in: {.fragment .fade-down}
+1. NumberDisplay.test.tsx {.fragment .fade-down}
+2. CounterButton.test.tsx {.fragment .fade-down}
+3. Counter.test.tsx {.fragment .fade-down}
+
+---
+
+#### NumberDisplay.test.tsx
+
+It is supposed to do 1 thing: {.fragment .fade-down}
+
+> Display the number it is provided {.fragment .fade-down}
+
+---
+
+##### NumberDisplay.test.tsx
+
+> Display the number it is provided
+-----
+GIVEN some test input {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+const testInput = 1
+```
+
+WHEN rendering the component with the test input {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+render(<NumberDisplay count={testInput} />)
+```
+
+THEN the test input should be visible {.fragment .fade-down}
+```js {.fragment .fade-down}
+const expectedElement = screen.queryByText(testInput)
+expect(expectedElement).toBeInTheDocument()
+```
+
+note: using a combination of `jest` and `react-testing-library` it is possible to construct BDD-esque scenarios that let you render individual components, and also inspect what was rendered.
+
+---
+
+#### CounterButton.test.tsx
+
+It is supposed to do 2 things: {.fragment .fade-down}
+
+> Display button for the user to click on {.fragment .fade-down}
+
+> Call a function that is provided when the button is clicked {.fragment .fade-down}
+
+---
+
+##### CounterButton.test.tsx
+
+> Display button for the user to click on
+------
+GIVEN a Counter Button component {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+const counterButton = <CounterButton onClick={mockClickHandler}/>
+```
+
+WHEN the Counter Button is rendered {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+render(counterButton);
+```
+
+THEN there should be a `Count!` button visible {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+const expectedElement = screen.queryByText('Count!');
+expect(expectedElement).toBeInTheDocument();
+```
+
+---
+
+##### CounterButton.test.tsx
+
+> Call a function that is provided when the button is clicked
+-----
+GIVEN a Counter Button is rendered with a mock function {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+const mockClickHandler = jest.fn();
+render(<CounterButton onClick={mockClickHandler}/>);
+```
+
+WHEN the `Count!` button is clicked  {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+const buttonOnScreen = screen.getByText('Count!');
+
+fireEvent.click(buttonOnScreen);
+```
+
+THEN the mock function should have been called {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+expect(mockClickHandler).toHaveBeenCalled();
+```
+
+---
+
+#### Counter.test.tsx
+
+It is supposed to do 3 things: {.fragment .fade-down}
+
+> it should show a number counter defaulting to 0 {.fragment .fade-down}
+
+> it should show a `Click!` button {.fragment .fade-down}
+
+> it should increase the counter when the button is clicked {.fragment .fade-down}
+
+note: This is where things get complicated...
+note: a big principle in testing is drawing boundaries around things you want to test
+note: You may decide to mock or stub certain things that you want to exclude from your tests
+
+note: a good question to ask yourself when drawing these boundaries is:
+note: Will this make it easier for me to test?
+
+---
+
+##### Counter.test.tsx
+
