@@ -393,7 +393,7 @@ import React from 'react'
 
 const SimpleComponent = () => {
   return (
-    <h1 styles={{ color="red" }}>Hello World!</h1>
+    <h1 styles={{ color: "red" }}>Hello World!</h1>
   )
 }
 ```
