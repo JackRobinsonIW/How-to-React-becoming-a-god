@@ -446,7 +446,7 @@ const CSSInJSStyledComponent = () => {
 ### So why CSS-in-JS?
 
 - Local Scoping - Uniquely generated CSS classes {.fragment .fade-down}
-- Composition using standard Javascript structures (variables, objects, arrays etc.) {.fragment .fade-down}
+- Composition using variables, objects, arrays, functions, conditions etc. {.fragment .fade-down}
 - Uniquely generated CSS classes per component {.fragment .fade-down}
   - Prevents CSS rule collisions
 - Compiled resulting in reduced file size
@@ -608,3 +608,16 @@ note: Will this make it easier for me to test?
 
 ##### Counter.test.tsx
 
+---
+
+### Further Reading
+
+- Facebook's own React Tutorial:
+  - https://reactjs.org/tutorial/tutorial.html
+
+
+---
+
+### Questions?
+
+___
