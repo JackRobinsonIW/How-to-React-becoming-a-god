@@ -35,7 +35,6 @@ note: Much of React development is about designing and implementing 'Components'
 note: self-contained little packets of re-usable code.
 note: The composition of components simply refers to the idea that you can declaritively use one component in another
 
-
 ---
 
 ### Developer Experience
@@ -246,7 +245,7 @@ note: if a component might be dependent on a bit of data, then it could be somet
 
 ### React.useState();
 
-React provides a method to declare and update state {.fragment .fade-down}
+React provides a hook to initialise and update state {.fragment .fade-down}
 
 ```jsx {.fragment .fade-down}
 import { useState } from 'React'
@@ -372,6 +371,65 @@ note: the handleClick method id passed as a prop to the CounterButton
 ### Demo Time!
 
 note: ./introTopics/examples/componentState contains the practical demo 'What is a component' 
+
+---
+
+### Data Flow in a React Application
+
+
+<style>
+.container{
+    display: flex;
+}
+.col{
+    flex: 1;
+}
+</style>
+
+<div class="container">
+
+<div class="col">
+
+- Data flows one way in a React application {.fragment .fade-down}
+- State describes the condition of the Component at a point in time {.fragment .fade-down}
+- Components declare how to display (render) that state {.fragment .fade-down}
+- Actions trigger updates in state {.fragment .fade-down}
+
+</div>
+
+<div class="col">
+
+![alt text](https://redux.js.org/assets/images/one-way-data-flow-04fe46332c1ccb3497ecb04b94e55b97.png) {.fragment .fade-down}
+
+</div>
+
+</div>
+
+---
+
+### Going back to our component...
+
+```jsx {.fragment .fade-down}
+import { useState } from 'react'
+import CounterButton from './CounterButton'
+import NumberDisplay from './NumberDisplay'
+
+const Counter = () => {
+  // State
+  const [numberOfClicks, setNumberOfClicks] = useState(0)
+  
+  // Action
+  const handleClick = () => setNumberOfClicks(numberOfClicks + 1)
+
+  // View
+  return (<>
+    <NumberDisplay count={numberOfClicks} />
+    <CounterButton onClick={handleClick} />
+  </>)
+}
+
+export default Counter
+```
 
 ---
 
