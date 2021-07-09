@@ -36,6 +36,7 @@ How to use hooks?
   - Hooks are just JavaScript functions but there are 2 rules you should follow when using them.
   - Only call hooks at the top level not inside loops or where code is heavily nested.
   - Only call a hook within a react functional component or within a custom hook.
+  - It is common practice to prefix a hook with 'use'.
 
 note: calling hooks at the top level ensures state is preserved between component re-renders
 note: calling hooks within React FC's ensures logic is clearly separated from the component
