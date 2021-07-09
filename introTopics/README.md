@@ -10,6 +10,16 @@ title: "Intro to React Workshop"
 
 ---
 
+## What will we discuss?
+
+1. Getting Started
+2. Components
+3. State
+4. Styling
+5. Testing
+
+---
+
 ## What is React?
 
 A front-end library with a heavy focused on: {.fragment .fade-down}
@@ -22,8 +32,6 @@ note: Amongst other things of course!
 ---
 
 ## Composition of Components
-
-Or
 > Components made of other Components {.fragment .fade-down}
 
 Because of this React development is all about: {.fragment .fade-down}
@@ -335,21 +343,21 @@ note: then only this component would need updating! everywhere using it would au
 Making use of our two other components.
 
 ```jsx {.fragment .fade-down}
-import { useState } from 'react'
-import CounterButton from './CounterButton'
-import NumberDisplay from './NumberDisplay'
+/*... imports ...*/
 
 const Counter = () => {
   const [numberOfClicks, setNumberOfClicks] = useState(0)
   
-  const handleClick = () => setNumberOfClicks(numberOfClicks + 1)
-  return (<>
-    <NumberDisplay count={numberOfClicks} />
-    <CounterButton onClick={handleClick} />
-  </>)
+  const handleClick = () =>  {
+    setNumberOfClicks(numberOfClicks + 1)
+  }
+  return (
+    <>
+      <NumberDisplay count={numberOfClicks} />
+      <CounterButton onClick={handleClick} />
+    </>
+  )
 }
-
-export default Counter
 ```
 
 note: This component is where the magic happens!
@@ -368,13 +376,7 @@ note: the handleClick method id passed as a prop to the CounterButton
 
 ---
 
-### Demo Time!
-
-note: ./introTopics/examples/componentState contains the practical demo 'What is a component' 
-
----
-
-### Data Flow in a React Application
+### React Data Flow 
 
 
 <style>
@@ -390,10 +392,10 @@ note: ./introTopics/examples/componentState contains the practical demo 'What is
 
 <div class="col">
 
-- Data flows one way in a React application {.fragment .fade-down}
-- State describes the condition of the Component at a point in time {.fragment .fade-down}
+- Data flows one way {.fragment .fade-down}
+- State describes a Component at a point in time {.fragment .fade-down}
 - Components declare how to display (render) that state {.fragment .fade-down}
-- Actions trigger updates in state {.fragment .fade-down}
+- Actions trigger updates to state {.fragment .fade-down}
 
 </div>
 
@@ -407,19 +409,17 @@ note: ./introTopics/examples/componentState contains the practical demo 'What is
 
 ---
 
-### Going back to our component...
+### back to our component...
 
 ```jsx {.fragment .fade-down}
-import { useState } from 'react'
-import CounterButton from './CounterButton'
-import NumberDisplay from './NumberDisplay'
-
 const Counter = () => {
   // State
   const [numberOfClicks, setNumberOfClicks] = useState(0)
   
   // Action
-  const handleClick = () => setNumberOfClicks(numberOfClicks + 1)
+  const handleClick = () => {
+    setNumberOfClicks(numberOfClicks + 1)
+  }
 
   // View
   return (<>
@@ -427,15 +427,19 @@ const Counter = () => {
     <CounterButton onClick={handleClick} />
   </>)
 }
-
-export default Counter
 ```
+
+---
+
+### Demo Time!
+
+note: ./introTopics/examples/componentState contains the practical demo 'What is a component' 
 
 ---
 
 ## Styling a Component
 
-There are a few ways to style components:
+There are a few ways to style components: {.fragment .fade-down}
 - Using inline styles {.fragment .fade-down}
 - Using traditional stylesheets {.fragment .fade-down}
 - Using CSS-in-JS {.fragment .fade-down}
@@ -461,6 +465,7 @@ const SimpleComponent = () => {
 ### Traditional Stylesheets
 
 ```css {.fragment .fade-down}
+/* SimpleComponent.css */
 .red {
   color: red;
 }
@@ -482,6 +487,7 @@ const SimpleComponent = () => {
 ### CSS-in-JS
 
 ```jsx {.fragment .fade-down}
+/* CSSInJSStyledComponent.css */
 export default createUseStyles({
   red: {
     color: 'red';
@@ -507,7 +513,7 @@ const CSSInJSStyledComponent = () => {
 - Composition using variables, objects, arrays, functions, conditions etc. {.fragment .fade-down}
 - Uniquely generated CSS classes per component {.fragment .fade-down}
   - Prevents CSS rule collisions
-- Compiled resulting in reduced file size
+- Compiled resulting in reduced file size {.fragment .fade-down}
 
 ---
 
@@ -623,7 +629,7 @@ expect(expectedElement).toBeInTheDocument();
 
 ##### CounterButton.test.tsx
 
-> Call a function that is provided when the button is clicked
+> Call provided function on button click
 -----
 GIVEN a Counter Button is rendered with a mock function {.fragment .fade-down}
 ```jsx {.fragment .fade-down}
@@ -634,7 +640,6 @@ render(<CounterButton onClick={mockClickHandler}/>);
 WHEN the `Count!` button is clicked  {.fragment .fade-down}
 ```jsx {.fragment .fade-down}
 const buttonOnScreen = screen.getByText('Count!');
-
 fireEvent.click(buttonOnScreen);
 ```
 
@@ -665,6 +670,8 @@ note: Will this make it easier for me to test?
 ---
 
 ##### Counter.test.tsx
+
+Let's Look at the code for this one 😊
 
 ---
 
