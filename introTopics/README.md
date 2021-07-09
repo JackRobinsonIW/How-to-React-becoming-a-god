@@ -25,7 +25,7 @@ title: "Intro to React Workshop"
 A front-end library with a heavy focused on: {.fragment .fade-down}
   - Composition of Components {.fragment .fade-down}
   - Developer Experience {.fragment .fade-down}
-
+  - Performance {.fragment .fade-down}
 
 note: Amongst other things of course!
 
@@ -62,6 +62,19 @@ note: Being a part of the Javascript ecosystem means less code for you to write 
 
 ---
 
+### Performance
+
+- React automatically decides what to update
+- Has component profiling tools available
+- Production Build options
+
+
+note: If a component on the page has not changed, then react won't do anything with it, targeting only the elements on the page have changed in some way
+
+note: When building a React app, there are many ways you can improve the performance of what the end user will actually recieve. If you really want to know more avout this, the React docs have some good details on this! https://reactjs.org/docs/optimizing-performance.html
+
+---
+
 ## How do i start?
 
 Use a quickstart tool! {.fragment .fade-down}
@@ -90,27 +103,30 @@ Tools like `create-react-app` will generate a bunch of code for you!
 
 ```sh
 super-mega-app
-├── README.md
 ├── package.json
 ├── public
+│   └── index.html   # the 'root' html for the whole app!
 ├── src
-│   ├── App.css     # default CSS applied to the app component
+│   ├── App.css      # default CSS applied to the app component
 │   ├── App.tsx      # An initial Component that is set up
 │   ├── App.test.tsx # A test file for the app component
-│   ├── index.css   # base CSS applied globally
-│   ├── index.tsx    # the 'root' of the whole app!
-│   ├── logo.svg
-│   ├── react-app-env.d.ts    
-│   ├── reportWebVitals.ts
+│   ├── index.css    # base CSS applied globally
+│   ├── index.tsx    # The base for your react code!
+│   ...
 │   └── setupTests.ts
 └── yarn.lock
 ```
+
+note: this isn't a complete tree, but rather some important ones worth being aware of!
+note: These aren't really critical to know inside and out when you're getting started
 
 ---
 
 ### Demo Time!
 
 note: introTopics/examples/createReactApp contains the practical demo for this slide
+
+note: Use the CLI tool to initialise an app, and then start it. This will show the first thing they will ever see for a fresh react app
 
 ---
 
@@ -154,11 +170,11 @@ import SimpleComponent from './SimpleComponent';
 
 const ComponentList = () => {
   return (
-    <ul>
+    <div>
       <SimpleComponent />
       <SimpleComponent />
       <SimpleComponent />
-    </ul>
+    </div>
   )
 }
 
@@ -167,14 +183,11 @@ export default ComponentList;
 
 note: What is different here to the component we just looked at? 
 
-
 ---
 
 ### What is a component?
 
 Components can have `props`
-
-(Similar to a HTML element's attributes)
 
 ```jsx {.fragment .fade-down}
 const ComponentWithProps = (props) => {
@@ -187,7 +200,8 @@ const ComponentWithProps = (props) => {
 export default ComponentWithProps;
 ```
 
-note: You could also think of props as 'function parameters'
+note: Props are somewhat similar to 'attributes' in HTML.
+note: You could also think of props as 'function parameters' which is probably a better comparison.
 note: props are things that get passed into your component, and your component can then make use of them
 note: this example takes a 'name' as a prop, which it then displays in a heading element
 
@@ -242,9 +256,9 @@ note: there are different ways of handling/representing state within react. We w
 ### Component State
 
 Examples of state:
-- Number of times a button is clicked {.fragment .fade-down}
+- Results from a search {.fragment .fade-down}
 - Name of a person typed into a form {.fragment .fade-down}
-- The time that the next train arrives {.fragment .fade-down}
+- The price of a car chosen by a user {.fragment .fade-down}
 
 note: some tangible things you might want to represent in your web app
 note: if a component might be dependent on a bit of data, then it could be something that is represented as state
@@ -253,7 +267,7 @@ note: if a component might be dependent on a bit of data, then it could be somet
 
 ### React.useState();
 
-React provides a hook to initialise and update state {.fragment .fade-down}
+React provides a way to initialise and update state {.fragment .fade-down}
 
 ```jsx {.fragment .fade-down}
 import { useState } from 'React'
@@ -376,6 +390,12 @@ note: the handleClick method id passed as a prop to the CounterButton
 
 ---
 
+### Demo Time!
+
+note: ./introTopics/examples/componentState contains the practical demo 'What is a component' 
+
+---
+
 ### React Data Flow 
 
 
@@ -431,12 +451,6 @@ const Counter = () => {
 
 ---
 
-### Demo Time!
-
-note: ./introTopics/examples/componentState contains the practical demo 'What is a component' 
-
----
-
 ## Styling a Component
 
 There are a few ways to style components: {.fragment .fade-down}
@@ -481,6 +495,8 @@ const SimpleComponent = () => {
   )
 }
 ```
+
+note: As a starting point this could be okay! you will quickly run into issues ensuring that the CSS only applies to your single component with out affecting other parts of the app.
 
 ---
 
@@ -687,12 +703,8 @@ Let's Look at the code for this one 😊
   - https://reactjs.org/tutorial/tutorial.html
 - A collection of various React resources:
   - https://github.com/enaqx/awesome-react
-
-- Awesome Lists
-  - https://github.com/enaqx/awesome-react
-  
-- React Developer Roadmap
-  - https://roadmap.sh/react
+- React Testing Library
+  - https://testing-library.com/docs/react-testing-library/intro/
 
 ---
 
