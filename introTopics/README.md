@@ -684,6 +684,11 @@ Let's Look at the code for this one 😊
 - Facebook's own React Tutorial:
   - https://reactjs.org/tutorial/tutorial.html
 
+- Awesome Lists
+  - https://github.com/enaqx/awesome-react
+  
+- React Developer Roadmap
+  - https://roadmap.sh/react
 
 ---
 
