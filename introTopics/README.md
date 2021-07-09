@@ -22,7 +22,7 @@ title: "Intro to React Workshop"
 
 ## What is React?
 
-A front-end library with a heavy focused on: {.fragment .fade-down}
+A front-end library with a heavy focus on: {.fragment .fade-down}
   - Composition of Components {.fragment .fade-down}
   - Developer Experience {.fragment .fade-down}
   - Performance {.fragment .fade-down}
@@ -71,11 +71,11 @@ note: Being a part of the Javascript ecosystem means less code for you to write 
 
 note: If a component on the page has not changed, then react won't do anything with it, targeting only the elements on the page have changed in some way
 
-note: When building a React app, there are many ways you can improve the performance of what the end user will actually recieve. If you really want to know more avout this, the React docs have some good details on this! https://reactjs.org/docs/optimizing-performance.html
+note: When building a React app, there are many ways you can improve the performance of what the end user will actually recieve. If you really want to know more about this, the React docs have some good details on this! https://reactjs.org/docs/optimizing-performance.html
 
 ---
 
-## How do i start?
+## How do I start?
 
 Use a quickstart tool! {.fragment .fade-down}
 
@@ -97,7 +97,7 @@ note: node version manager (nvm) is a really valuable tool to use https://github
 
 ---
 
-## How do i start?
+## How do I start?
 
 Tools like `create-react-app` will generate a bunch of code for you!
 
