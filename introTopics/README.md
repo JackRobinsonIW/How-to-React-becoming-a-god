@@ -688,6 +688,11 @@ Let's Look at the code for this one 😊
 - A collection of various React resources:
   - https://github.com/enaqx/awesome-react
 
+- Awesome Lists
+  - https://github.com/enaqx/awesome-react
+  
+- React Developer Roadmap
+  - https://roadmap.sh/react
 
 ---
 
