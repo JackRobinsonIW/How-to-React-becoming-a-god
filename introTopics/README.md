@@ -681,8 +681,12 @@ Let's Look at the code for this one 😊
 
 ### Further Reading
 
+- Learning React roadmap:
+  - https://roadmap.sh/react
 - Facebook's own React Tutorial:
   - https://reactjs.org/tutorial/tutorial.html
+- A collection of various React resources:
+  - https://github.com/enaqx/awesome-react
 
 
 ---
