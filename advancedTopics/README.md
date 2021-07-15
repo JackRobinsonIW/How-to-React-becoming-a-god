@@ -13,13 +13,13 @@ title: "Advanced Topics in React"
 ## What Will We Discuss?
 
 1. Hooks
-2. Storybook
+2. Tooling
 
 note: There are so many things we could cover. State Management, Forms, React Patterns. Unfortunately there is only so much time! We picked these topics as they led on quite nicely from the 'intro' topics. If anyone thinks it would be useful to have dedicated sessions on things like State Management, or such things, then do say! we are happy to run more sessions.
 
 note: When we look at hooks, we're gonna demonstrate how and where to use the most common ones you will come across. There will be code examples you can use as reference moving forward.
 
-note: when we look at storybook.............
+note: when we look at tooling we're going to cover some tools which help you develop and maintain a React application, including Storybook, Prettier, ESLint and React Developer Tools
 
 ---
 
@@ -240,3 +240,141 @@ note: ./advancedTopics/examples/built-in-hooks
 ### Demo Time
 
 note: advancedTopics/examples/customHooks contains the practical demo for this slide
+
+---
+
+## Tooling
+
+1. Storybook
+2. Prettier
+3. ESLint
+4. React Developer Tools
+
+---
+
+## Storybook
+
+1. What is Storybook?
+2. What is a Story?
+3. What are the benefits of using Storybook?
+4. How do you setup Storybook?
+5. Example Storybooks
+
+---
+
+## What is Storybook?
+
+Storybook is a tool enabling developers to rapidly develop UI components and pages by defining Stories.
+
+It is not React specific.
+
+note: Storybook can be used with other libraries, such as Angular, Vue, Svelte etc.
+
+note: Adopted for use by many high profile organisations including Github, Dropbox, Airbnb, Mozilla
+
+---
+
+## What is Storybook?
+
+Storybook promotes the creation of isolated components and the composition of these components into larger pages.
+
+note: This builds on the basic React concept of small discrete components nicely
+
+---
+
+## What is a Story?
+
+A Story describes a component in a particular state.
+
+We can create multiple stories for a single component that can describe the same component in different states.
+
+note: For example a Button component with a prop specifying different sizes
+
+---
+
+## Example Story
+
+Let us create a simple component:
+
+```jsx
+export const Button = ({ primary = false, label }: ButtonProps) => {
+  const classes = styles();
+
+  const { storybookButtonPrimary, storybookButtonSecondary } = classes;
+
+  const buttonClass = primary ? storybookButtonPrimary : storybookButtonSecondary;
+
+  return (
+    <button type="button" className={buttonClass}>
+      {label}
+    </button>
+  );
+};
+```
+
+---
+
+## Example Story
+
+We can create a story that looks like this:
+
+```jsx
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  primary: true,
+  label: "Primary Button",
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: "Secondary Button",
+};
+```
+
+note: There's a bit of setup that has been skipped here but we'll dig through this when we run through the demo later.  The thing to note at this stage is that we're defining the different states our component can exist in
+
+---
+
+## How do you setup Storybook?
+
+It's simply a case of running `npx sb init` inside an existing project
+
+For example one created using `create-react-app`
+
+note: This is best done at the very beginning of creating your project, otherwise you might have to configure storybook further to work with your existing project setup
+
+---
+
+## Demo Time!
+
+---
+
+## What are the benefits of using Storybook?
+
+- Stories help us build up UI components rapidly, increases development speed
+
+- Stories help to document our components.
+
+- Stories can be used to help the testing process.
+
+- Storybooks can be built and published for wider audiences
+
+note: By building up our UI using stories we need not spin up the entire application to test a change.  For example, the effect of making some text bold. 
+
+note: By building up Stories of our components, we instantly document a Component's functionality and the various properties it supports and provide examples for free
+
+note: We can actually reuse our stories by importing them into our unit tests
+
+---
+
+## Example Storybooks
+
+- [Storybook's Own](https://next--storybookjs.netlify.app/official-storybook/)
+
+- [BBC News](https://bbc.github.io/psammead/)
+
+- [The Guardian](https://5dfcbf3012392c0020e7140b-gmgigeoguh.chromatic.com/)
+
+- [Shopify](https://5d559397bae39100201eedc1-vtjuukkvtu.chromatic.com/)
