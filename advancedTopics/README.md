@@ -13,7 +13,7 @@ title: "Advanced Topics in React"
 ## What Will We Discuss?
 
 1. Hooks
-2. Tooling
+2. Tooling/Libraries
 
 note: There are so many things we could cover. State Management, Forms, React Patterns. Unfortunately there is only so much time! We picked these topics as they led on quite nicely from the 'intro' topics. If anyone thinks it would be useful to have dedicated sessions on things like State Management, or such things, then do say! we are happy to run more sessions.
 
@@ -246,9 +246,9 @@ note: advancedTopics/examples/customHooks contains the practical demo for this s
 ## Tooling
 
 1. Storybook
-2. Prettier
-3. ESLint
-4. React Developer Tools
+2. React Developer Tools
+3. Prettier
+4. ESLint
 
 ---
 
@@ -378,3 +378,118 @@ note: We can actually reuse our stories by importing them into our unit tests
 - [The Guardian](https://5dfcbf3012392c0020e7140b-gmgigeoguh.chromatic.com/)
 
 - [Shopify](https://5d559397bae39100201eedc1-vtjuukkvtu.chromatic.com/)
+
+---
+
+## React Developer Tools
+
+React Developer Tools is a browser extension that helps developers debug their React application.
+
+![React Developer Tools UI](https://lh3.googleusercontent.com/XWuZGqIrIsaoKHUqqQ2rs_GhS5JaH1p5pPBIUpj22mjNRNdR3Ana8FKz4B7JwsA6HIFVXGuU7pa4ELiW6iUNhs0Iyg=w640-h400-e365-rj-sc0x00ffffff)
+
+---
+
+## React Developer Tools
+
+Once installed, it enables visualisation of the component tree and interrogation of the component's `State` and provided `Props`
+
+note: also allows manipulation of both state and props
+
+note: Quick demo here demonstrating it
+
+---
+
+## React Developer Tools
+
+[Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+
+[Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
+
+---
+
+## Prettier & ESLint
+
+- Prettier is a code formatter
+  - Formats your code to conform to a consistent style
+  - Opinionated, very limited in terms of configuration
+
+- ESLint performs static code analysis
+  - Ensures your code confirms to agreed rules and conventions
+  - Highlights and (if configured/able to do so) fixes issues
+  - Highly configurable
+
+---
+
+## Prettier
+
+As an example Prettier will turn this:
+
+```jsx
+
+const myObject = { someLongProperty, someOtherProperty, someReallyLongProperty, someReallyReallyLongProperty }
+
+```
+
+---
+
+## Prettier
+
+Into this:
+
+```jsx
+
+const myObject = {
+  someLongProperty,
+  someOtherProperty,
+  someReallyLongProperty,
+  someReallyReallyLongProperty,
+};
+
+```
+
+note: the extra dangling comma and the semi-colon added
+
+---
+
+## Ruleset
+
+The ruleset for Prettier is extremely limited 
+
+---
+
+## ESLint
+
+ESLint will not immediately fix issues, but can raise warnings and errors.  Consider the trivial example:
+
+```jsx
+
+const varaibleA = 'hello';
+const variableB = 'world';
+
+console.log(variableB);
+
+```
+
+---
+
+## ESLint
+
+Depending on the rules configured, the previous example could raise a number of warnings/errors:
+
+- No Unused Variables
+  - `variableA` wasn't used anywhere in the example
+
+- No `console.log` statements
+  - We output a console.log
+
+- No single quotes
+  - We might have a rule configured to only allow double quotes to be used for strings
+
+---
+
+## IDE and Pipeline Integration
+
+Both Prettier and ESLint can be configured to run:
+- In your IDE (via installed extensions)
+- In pre-commit hooks (for example using Husky)
+- In your pipeline (for example via NPM commands)
