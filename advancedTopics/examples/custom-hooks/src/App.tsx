@@ -1,39 +1,28 @@
-import { useCallback, useState } from 'react';
-import './App.css';
+import styled from "styled-components";
 
-const useToggle = (initialState: boolean = false): [boolean, () => void] => {
-  const [state, setState] = useState<boolean>(initialState);
+import Modal from "./components/Modal";
+import useModal from "./hooks/useModal";
 
-  const toggle = useCallback((): void => setState(state => !state), []);
-  return [state, toggle]
-}
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
-interface ModalProps {
-  displayModal: boolean;
-  setDisplayModal: () => void
-}
-
-const Modal = ({ displayModal, setDisplayModal }: ModalProps) => {
-
-  if (!displayModal) return null;
-
-  return (
-    <div style={{ position: 'absolute', alignSelf: 'center', padding: '20px', borderWidth: '1px', borderStyle: 'solid', marginTop: '500px', justifyContent: 'center', textAlign: 'center' }}>
-      <p style={{ fontSize: 20, fontWeight: 'bold' }}>Modal Window</p>
-      <p>Some text you want to show the user</p>
-      <button style={{ padding: '10px', fontSize: 20 }} onClick={setDisplayModal}>Close Modal</button>
-    </div>
-  )
-}
+const Button = styled.button`
+  margin-top: 100px;
+  padding: 20px;
+`;
 
 function App() {
-  const [displayModal, setDisplayModal] = useToggle();
+  const [displayModal, setDisplayModal] = useModal();
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <button style={{ marginTop: '100px', padding: '20px', fontSize: 20 }} onClick={setDisplayModal}>{displayModal ? 'Close Modal' : 'Open Modal'}</button>
+    <Container>
+      <Button onClick={setDisplayModal}>
+        {displayModal ? "Close Modal" : "Open Modal"}
+      </Button>
       <Modal displayModal={displayModal} setDisplayModal={setDisplayModal} />
-    </div>
+    </Container>
   );
 }
 
