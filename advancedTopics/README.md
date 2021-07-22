@@ -23,8 +23,6 @@ note: There are so many things we could cover. State Management, Forms, React Pa
 
 note: When we look at hooks, we're gonna demonstrate how and where to use the most common ones you will come across. There will be code examples you can use as reference moving forward.
 
-note: when we look at tooling we're going to cover some tools which help you develop and maintain a React application, including Storybook, Prettier, ESLint and React Developer Tools
-
 ---
 
 ## Hooks
@@ -321,7 +319,7 @@ const DisplayFieldWithCounter = asCounter(DisplayField);
 
 ## Demo Time!
 
-note: ./advancedTopics/examples/advanced-patterns
+note: ./advancedTopics/examples/advanced-patterns/src/components/HigherOrderComponentExamples
 
 ---
 
@@ -384,6 +382,111 @@ note: separate boundaries can be used in modals for example to prevent the entir
 
 ## Demo Time!
 
-note: ./advancedTopics/examples/advanced-patterns
+note: ./advancedTopics/examples/advanced-patterns/src/components/ErrorBoundaryExample
+
+---
+
+## Minimising Re-renders
+
+1. Why minimise re-renders at all?
+2. How can you minimise re-renders?
+
+---
+
+## Why minimise re-renders at all?
+
+React generates a representation of the UI and maintains this (the Virtual DOM).
+
+React acts on `Props` or `State` changes to a Component by recalculating whether a DOM update is necessary.
+
+Even though it only updates what it needs to, re-rendering is expensive.
+
+note: generally this is not noticable but degraded performance can become noticable
+
+---
+
+## How can you minimise re-renders
+
+1. Extend `React.PureComponent`
+2. Implement `shouldComponentUpdate`
+3. Use `React.memo()` Higher Order Component
+4. Use the `useMemo()` Hook
+
+note: for the demo we'll focus on `memo` and `useMemo` hook as most components are now leaning to be functional in nature
+
+note: React may choose to forget memoised values, i.e. to free up memory, so they should only be used as a performance optimisation rather than a semantic guarantee
+
+---
+
+## Extending React.PureComponent
+
+```jsx
+class MyComponent extends React.PureComponent {
+  ...
+}
+```
+
+  - `PureComponent` is similar to `Component`
+  - Only for Class based Components
+  - Implements a shallow `props` comparison for `shouldComponentUpdate()`
+  - Can be used when a Component's `props` would result in the same UI
+
+note: Shallow comparison will not trigger a rerender for deep object/array changes
+
+note: Will also prevent re-renders of the child component tree
+
+---
+
+## Implementing shouldComponentUpdate()
+
+```jsx
+shouldComponentUpdate(nextProps, nextState)
+```
+
+  - Again only Class based Components
+  - Invoked before `render` in the components lifecycle
+  - Returns `true` by default
+  - Compare `this.props` against `nextProps` and/or `this.state` against `nextState`
+  - Return `false` to prevent re-render
+
+note: componentWillUpdate, render and componentDidUpdate will not fire
+
+note: faulty implementation of this can prevent expected renders
+
+note: should take care not to perform inefficient equality checks
+
+---
+
+## Use `React.memo()` Higher Order Component
+
+```jsx
+const MemoComponent = React.memo(MyFunctionalComponent);
+```
+
+  - Essentially "PureComponent" for Functional Components
+  - Prevents re-renders unless `props` change
+  - Not a semantic guarantee
+
+---
+
+## Use `useMemo()` Hook
+
+```jsx
+const memoizedValue = useMemo(() => calculateValue(a), [a]);
+```
+
+  - Pass a function to calculate the value and an array of dependencies
+  - `useMemo` will only re-calculate the value when one of the dependencies have changed
+  - Empty dependencies will result in a calculation on every render
+
+note: This also includes during render
+
+note: Don't implement side effects here, those belong in useEffect
+
+---
+
+## Demo Time!
+
+note: ./advancedTopics/examples/advanced-patterns/src/components/MemoExample
 
 ---
