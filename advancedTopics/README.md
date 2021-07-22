@@ -285,9 +285,105 @@ note: The Higher Order Component doesn't care about how the implementation is go
 
 One use of a Higher Order Component is to enhance a component with more functionality.
 
-```jsx
-const ComponentWithLoader = withLoader(BaseComponent);
+For example, enhancing with loading functionality
 
-<ComponentWithLoader loading={true} someComponentProperty={someValue}>
+```jsx
+export const HelloWorld = (props: HelloWorldProps) => <h1>Hello World!</h1>;
+
+// Adds an additional loading prop along with loading functionality
+export const HelloWorldWithLoader = withLoader(HelloWorld);
+
+<HelloWorldWithLoader loading={true} />
 
 ```
+
+---
+
+## Injecting into a Component
+
+Another common use is to inject a component with functionality.
+
+For example, adding a Counter to an existing component
+
+```jsx
+
+export const DisplayField = ({ value }: DisplayFieldProps) => 
+  <span>{value}</span>;
+
+// asCounter injects value into the DisplayField component
+const DisplayFieldWithCounter = asCounter(DisplayField);
+
+<DisplayFieldWithCounter />
+
+```
+
+---
+
+## Demo Time!
+
+note: ./advancedTopics/examples/advanced-patterns
+
+---
+
+## Error Boundaries
+
+1. What are Error Boundaries?
+2. What are they not used for?
+3. Defining an Error Boundary
+4. Using Error Boundaries
+
+---
+
+## What are Error Boundaries?
+
+ - Error Boundaries are components that catch JavaScript errors
+ - They catch errors thrown anywhere in the child component tree
+ - Caught errors can be logged and a fallback UI is displayed
+ - Act as a declarative approach to try/catch
+
+---
+
+## What are they not used for?
+
+  - Error Boundaries do not catch errors thrown:
+    - By Event Handlers
+    - By Asynchronous Code
+    - During Server Side Rendering
+    - In the Boundary itself
+
+note: Errors thrown by event handlers and Async Code don't happen during rendering, so React doesn't need Boundaries as it still knows what to render
+
+note: Use regular try/catches for these
+
+---
+
+## Defining an Error Boundary
+
+An error boundary is a class component that defines one or both of the following lifecycle methods:
+  - `static getDerivedStateFromError`
+  - `componentDidCatch`
+
+note: there is no functional equivalent of an Error Boundary, an example of where Class components are still used
+
+note: getDerivedStateFromError allows you to update state to show a fallback UI
+
+note: componentDidCatch gives you the opportunity to act on the error, e.g. log it
+
+---
+
+## Using Error Boundaries
+
+  - Error Boundaries can be nested
+  - Errors thrown will be caught by the nearest parent Boundary
+  
+note: generally you'll have one top level boundary that will catch everything.
+
+note: separate boundaries can be used in modals for example to prevent the entire application from crashing if an error is thrown in a modal
+
+---
+
+## Demo Time!
+
+note: ./advancedTopics/examples/advanced-patterns
+
+---

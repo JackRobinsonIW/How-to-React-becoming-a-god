@@ -14,11 +14,14 @@ export const HigherOrderComponentExamples = () => {
 
   return (
     <>
-      <HelloWorld name={"Boris"} />
+      <HelloWorld name={"Boris Johnson"} />
+
       {/* <Button onClick={onClick} label={"Toggle Loading"} />
-      <HelloWorldWithLoader loading={loading} name={"Theresa"} />
-      <DisplayField value={100} bold />
-      <DisplayFieldWithCounter /> */}
+      <HelloWorldWithLoader loading={loading} name={"Joe Biden"} /> */}
+
+      {/* <DisplayField value={100} bold /> */}
+
+      {/* <DisplayFieldWithCounter /> */}
     </>
   );
 };
