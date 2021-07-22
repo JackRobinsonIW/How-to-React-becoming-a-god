@@ -1,4 +1,4 @@
-import { ComponentType, Component } from "react";
+import { ComponentType, FC } from "react";
 
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 
@@ -7,8 +7,12 @@ interface WithLoaderProps {
 }
 
 export const withLoader =
-  <T extends object>(
-    WrappedComponent: React.ComponentType<T>
-  ): React.FC<T & WithLoaderProps> =>
+  <WrappedProps extends object>(
+    WrappedComponent: ComponentType<WrappedProps>
+  ): FC<WrappedProps & WithLoaderProps> =>
   ({ loading, ...props }: WithLoaderProps) =>
-    loading ? <LoadingSpinner /> : <WrappedComponent {...(props as T)} />;
+    loading ? (
+      <LoadingSpinner />
+    ) : (
+      <WrappedComponent {...(props as WrappedProps)} />
+    );
