@@ -247,3 +247,47 @@ note: advancedTopics/examples/customHooks contains the practical demo for this s
 
 ---
 
+## Higher Order Components
+
+1. What are Higher Order Components?
+2. What are they used for?
+3. Enhancing a Component
+4. Injecting into a Component
+
+---
+
+## What are Higher Order Components?
+  - A Higher Order Component (HOC) is a technique for reusing component logic
+
+  - A Higher Order Component is a function which takes a component and returns a new component
+  
+```jsx
+const ComposedComponent = higherOrderComponentFunction(WrappedComponent);
+```
+
+note: Transforms a component into another component as opposed to a component which transforms props into UI
+
+---
+
+## What are they used for?
+
+  - Abstracting out and sharing logic across Components
+
+  - Abstraction without mutation or duplication
+
+note: The wrapped Component's implementation isn't changed or copied in anyway, the wrapped component is simply composed by the Higher Order Component.
+
+note: The Higher Order Component doesn't care about how the implementation is going to be used and the Wrapped Component doesn't care where the implementation came from
+
+---
+
+## Enhancing a Component
+
+One use of a Higher Order Component is to enhance a component with more functionality.
+
+```jsx
+const ComponentWithLoader = withLoader(BaseComponent);
+
+<ComponentWithLoader loading={true} someComponentProperty={someValue}>
+
+```
