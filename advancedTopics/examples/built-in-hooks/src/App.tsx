@@ -2,6 +2,7 @@ import { UseState } from './components/UseState'
 import { UseRef } from './components/UseRef'
 import { UseEffect } from './components/UseEffect'
 import { UseContext } from './components/UseContext'
+import { UseContextSimple } from './components/UseContextSimple'
 import { Card } from './components/Card'
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
       
       <Card title={'useEffect'}>
         <UseEffect />
+      </Card>
+
+      <Card title={'useContext (simple)'}>
+        <UseContextSimple />
       </Card>
       
       <Card title={'useContext'}>
