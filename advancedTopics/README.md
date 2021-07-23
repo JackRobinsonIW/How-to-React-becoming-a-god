@@ -18,7 +18,6 @@ title: "Advanced Topics in React"
 3. Error Boundaries'
 4. Minimising Re-renders
 5. Controlled vs Uncontrolled Components
-6. Lazy Loading
 
 note: There are so many things we could cover. State Management, Forms, React Patterns. Unfortunately there is only so much time! We picked these topics as they led on quite nicely from the 'intro' topics. If anyone thinks it would be useful to have dedicated sessions on things like State Management, or such things, then do say! we are happy to run more sessions.
 
