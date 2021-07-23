@@ -3,6 +3,7 @@ import { UseRef } from './components/UseRef'
 import { UseEffect } from './components/UseEffect'
 import { UseContext } from './components/UseContext'
 import { UseContextSimple } from './components/UseContextSimple'
+import { CustomHook } from './components/CustomHook'
 import { Card } from './components/Card'
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
       
       <Card title={'useContext'}>
         <UseContext />
+      </Card>
+
+      <Card title={'Custom Hook'}>
+        <CustomHook />
       </Card>
     </div>
   );
