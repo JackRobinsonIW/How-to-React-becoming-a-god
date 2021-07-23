@@ -1,5 +1,6 @@
 ---
 theme: "night"
+customTheme: "our-theme"
 transition: "slide"
 highlightTheme: "monokai"
 slideNumber: false
@@ -746,7 +747,7 @@ note: File input fields cannot be programatically manipulated (i.e. the field va
 
 ---
 
-## Controlled vs Uncontrolled At a Glance
+#### Controlled vs Uncontrolled At a Glance
 
 |                                       | Controlled | Uncontrolled |
 |---------------------------------------|:----------:|:------------:|
