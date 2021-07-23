@@ -434,10 +434,13 @@ note: advancedTopics/examples/customHooks contains the practical demo for this s
   - A Higher Order Component is a function which takes a component and returns a new component
   
 ```jsx
-const ComposedComponent = higherOrderComponentFunction(WrappedComponent);
+const ComposedComponent = 
+  higherOrderComponentFunction(WrappedComponent, ...);
 ```
 
 note: Transforms a component into another component as opposed to a component which transforms props into UI
+
+note: Can take more than one parameter, e.g. a config, another function, etc.
 
 ---
 
@@ -480,7 +483,7 @@ For example, adding a Counter to an existing component
 ```jsx
 
 export const DisplayField = ({ value }: DisplayFieldProps) => 
-  <span>{value}</span>;
+  (<span>{value}</span>);
 
 // asCounter injects value into the DisplayField component
 const DisplayFieldWithCounter = asCounter(DisplayField);
@@ -515,7 +518,7 @@ note: ./advancedTopics/examples/advanced-patterns/src/components/HigherOrderComp
 
 ---
 
-## What are they not used for?
+## What are they *not* used for?
 
   - Error Boundaries do not catch errors thrown:
     - By Event Handlers
@@ -569,11 +572,11 @@ note: ./advancedTopics/examples/advanced-patterns/src/components/ErrorBoundaryEx
 
 ## Why minimise re-renders at all?
 
-React generates a representation of the UI and maintains this (the Virtual DOM).
+- React generates a representation of the UI and maintains this (the Virtual DOM).
 
-React acts on `Props` or `State` changes to a Component by recalculating whether a DOM update is necessary.
+- React acts on `Props` or `State` changes to a Component by recalculating whether a DOM update is necessary.
 
-Even though it only updates what it needs to, re-rendering is expensive.
+- Even though it only updates what it needs to, re-rendering is expensive.
 
 note: generally this is not noticable but degraded performance can become noticable
 
@@ -617,7 +620,7 @@ note: Will also prevent re-renders of the child component tree
 shouldComponentUpdate(nextProps, nextState)
 ```
 
-  - Again only Class based Components
+  - For components which extend `React.Component`
   - Invoked before `render` in the components lifecycle
   - Returns `true` by default
   - Compare `this.props` against `nextProps` and/or `this.state` against `nextState`
@@ -697,7 +700,7 @@ export const ControlledInput = () => {
   }
 
   // The input component's value is passed in as props
-  return <input type="text" value={value} onChange={onChange}>;
+  return (<input type="text" value={value} onChange={onChange}>);
 }
 
 ```
@@ -724,16 +727,16 @@ export const UncontrolledInput = () => {
   };
 
   // The input takes our ref as a prop, the value is maintained internally in the DOM
-  return <input type="text" ref={inputRef} />;
+  return (<input type="text" ref={inputRef} />);
 };
 
 ```
 
 ---
 
-## Why would you want to use an Uncontrolled Component?
+### Why use an Uncontrolled Component?
 
-  - Quick (but dirty)
+  - Quick (but also "dirty")
   - Library integration (e.g. React Hook Form)
   - Integration with non-React code
   - Necessity (e.g. File Input)
