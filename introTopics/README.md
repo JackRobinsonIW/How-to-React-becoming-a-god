@@ -95,6 +95,12 @@ note: you will need to have Node.js installed (with npm)
 note: https://nodejs.org/en/ is a great place to start
 note: node version manager (nvm) is a really valuable tool to use https://github.com/nvm-sh/nvm
 
+note: DEMO HERE!
+
+note: introTopics/examples/createReactApp contains the practical demo for this slide
+
+note: Use the CLI tool to initialise an app, and then start it. This will show the first thing they will ever see for a fresh react app
+
 ---
 
 ## How do I start?
@@ -120,13 +126,6 @@ super-mega-app
 note: this isn't a complete tree, but rather some important ones worth being aware of!
 note: These aren't really critical to know inside and out when you're getting started
 
----
-
-### Demo Time!
-
-note: introTopics/examples/createReactApp contains the practical demo for this slide
-
-note: Use the CLI tool to initialise an app, and then start it. This will show the first thing they will ever see for a fresh react app
 
 ---
 

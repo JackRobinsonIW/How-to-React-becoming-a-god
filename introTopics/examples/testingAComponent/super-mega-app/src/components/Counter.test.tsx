@@ -28,7 +28,7 @@ describe('when clicking on the Count! button', () => {
     expect(screen.queryByText('Count!')).toBeInTheDocument();
   });
 
-  it('should a display a number incremented from 1', () => {
+  it('should a display a number incremented to be 1', () => {
     expect(screen.queryByText('1')).toBeInTheDocument();
   });
 });
