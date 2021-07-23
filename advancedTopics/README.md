@@ -14,7 +14,7 @@ title: "Advanced Topics in React"
 
 1. Hooks
 2. Higher Order Components
-3. Error Boundaries
+3. Error Boundaries'
 4. Minimising Re-renders
 5. Controlled vs Uncontrolled Components
 6. Lazy Loading
@@ -225,9 +225,101 @@ note: ./advancedTopics/examples/built-in-hooks
 
 ## useEffect
 
+A hook to let you perform some side-effect when a component renders
+- Can perform an action on intitial render
+- Can perfom an action conditionally on state changes
+
+note: a good example of some side effect a component might make is fetching data from some API
+note: it might do this once on initial render, or it might do it on each render if some thing has changed
+
 ---
 
 ## useEffect - Example
+
+```jsx
+import { useEffect, useState } from "react";
+
+export const DataDisplayer = () => {
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then((response) => response.json())
+      .then((json) => setData(JSON.stringify(json))
+  }, []);
+
+  return <div>{ data ? data : loading... }</div>
+};
+
+```
+
+---
+
+## useEffect - Breakdown
+
+The useEffect hook takes 2 things
+1. An 'effect' callback
+2. A Dependencies Array
+
+```js
+useEffect(() => {
+  // Some side effect
+}, [ ... ]);
+```
+
+---
+
+## useEffect - Breakdown
+
+All `useEffects` will be evaluated each time your component renders. {.fragment .fade-down}
+
+Not every effect will actually be applied though!  {.fragment .fade-down}
+
+Whether a hook runs or not is determined by the dependencies array  {.fragment .fade-down}
+
+---
+
+## useEffect - Breakdown
+
+- This effect will be applied once, on initial render  {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+useEffect(() => {}, [])
+```
+
+- This effect will be applied whenever the pageNumber variable changes {.fragment .fade-down}
+```jsx {.fragment .fade-down}
+useEffect(() => {}, [pageNumber])
+```
+
+---
+
+## useEffect - Cleanup
+
+Some side-effects can cause memoryleaks or errors:
+
+Attempting to update the state of an unmounted component {.fragment .fade-down}
+
+React provides a mechanism to 'clean up' useEffects {.fragment .fade-down}
+
+---
+
+## useEffect - Cleanup Example
+
+```jsx
+useEffect(() => {
+  API.subscribeToChanges();
+
+  return () => API.unsubscribeFromChanges()
+}, [])
+```
+
+note: the function you return from an effect will be called when a component unmounts
+note: It will also 'cleanup' before a particular effect runs again. You could use this to reset some state before making an API request
+
+---
+
+### Demo Time
+note: ./advancedTopics/examples/built-in-hooks contains the practical demo for this slide
 
 ---
 
