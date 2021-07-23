@@ -325,9 +325,91 @@ note: ./advancedTopics/examples/built-in-hooks contains the practical demo for t
 
 ## useContext
 
+This hook provides a means of making things available to all components in a tree
+
+Context is typically composed of: {.fragment .fade-down}
+- State {.fragment .fade-down}
+- Actions {.fragment .fade-down}
+
+note: You can think of it as some global space that all child components will be able to interact with.
+
 ---
 
 ## useContext - Example
+
+The useContext hook involves 3 things:
+1. Creating a Context {.fragment .fade-down}
+2. A Context Provider {.fragment .fade-down}
+3. A Context Consumer {.fragment .fade-down}
+
+---
+
+## useContext - Example
+
+Creating A Context:
+
+```js
+import { createContext } from 'react'
+
+export const SomeContext = createContext( ... );
+```
+
+note: The context is exported so tha it can be used in the consumer of the context in the `useContext` hook.
+
+note: the createContext method takes an initial state, similar to the useState hook.
+
+note: the createContext method is not a hook, and is generally used outside of a component.
+
+---
+
+## useContext - Example
+
+A Context Provider:
+
+```jsx
+export const SomeComponent = () => {
+  return (
+    <SomeContext.Provider value={ ... }>
+      <ChildComponent />
+      <AnotherChild />
+    </SomeContext.Provider>
+  );
+}
+```
+
+note: The context that was created will have a `Provider` property which is essentially another react component. You can give it a `value` that represents the `context` which is available to anything consuming it.
+
+---
+
+## useContext - Example
+
+A Context Consumer
+
+```jsx
+import { SomeContext } from '../SomeContext';
+
+const ContextConsumer = () => {
+  const context = useContext(SomeContext); 
+
+  return <div>{context.someValue}</div>;
+}
+
+```
+
+note: the consumer of the context utilises the 'useContext' hook and provides the context which it wants to use.
+
+note: The implementation of this component now means that it must be used in a component tree wrapped by the Context provider.
+
+note: It is common practice to extract the 'Provider' and 'useContext' methods into their own Provider Component and customer hook.
+
+note: React Hook Forms is a really good example of this in practice.
+
+---
+
+### Demo Time
+
+note: ./advancedTopics/examples/UseContextSimple has a small context example
+note: ./advancedTopics/examples/UseContext has a more weaponised example
 
 ---
 
