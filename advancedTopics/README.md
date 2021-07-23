@@ -664,3 +664,109 @@ note: Don't implement side effects here, those belong in useEffect
 note: ./advancedTopics/examples/advanced-patterns/src/components/MemoExample
 
 ---
+
+## Controlled vs Uncontrolled Components
+
+1. What is a Controlled Component?
+2. What is an Uncontrolled Component?
+3. Why would you want to use Uncontrolled Components?
+4. Controlled vs Uncontrolled At a Glance
+
+note: This is mainly concerned with DOM elements which maintain their own internal state, i.e. Form elements
+
+---
+
+## What is a Controlled Component?
+
+  - Input component that takes it's `value` from props
+  - Notifies changes through callbacks e.g. `onChange`
+  - State is managed by the Parent Component
+
+---
+
+```jsx
+
+export const ControlledInput = () => {
+
+  // The form value is maintained in Component State
+  const [value, setValue] = useState("");
+
+  // We create a callback which can be used to update the state
+  const onChange = (event) => {
+    setValue(event.target.value);
+  }
+
+  // The input component's value is passed in as props
+  return <input type="text" value={value} onChange={onChange}>;
+}
+
+```
+
+---
+
+## What is an Uncontrolled Component?
+
+  - Akin to traditional HTML
+  - Input component that manages it's own state internally
+  - Query the DOM (via a ref) to get the current value
+
+---
+
+```jsx
+
+export const UncontrolledInput = () => {
+  // We create a ref for our input field
+  const inputRef = useRef<HTMLInputElement>();
+
+  const handleSubmit = (event) => {
+    // We can get the value of the input field from our ref
+    console.log(inputRef.current.value);
+  };
+
+  // The input takes our ref as a prop, the value is maintained internally in the DOM
+  return <input type="text" ref={inputRef} />;
+};
+
+```
+
+---
+
+## Why would you want to use an Uncontrolled Component?
+
+  - Quick (but dirty)
+  - Library integration (e.g. React Hook Form)
+  - Integration with non-React code
+  - Necessity (e.g. File Input)
+
+You should more often than not use Controlled Components!
+
+note: Some form libraries, e.g. React Hook Form are designed for use with Uncontrolled components
+
+note: File input fields cannot be programatically manipulated (i.e. the field value set) so have to be handled Uncontrolled.
+
+---
+
+## Controlled vs Uncontrolled At a Glance
+
+|                                       | Controlled | Uncontrolled |
+|---------------------------------------|:----------:|:------------:|
+| One time value retrieval              |      ✅     |       ✅      |
+| Validating on submit                  |      ✅     |       ✅      |
+| File Input                            |      ❌     |       ✅      |
+| Instant form/field validation         |      ✅     |       ❌      |
+| Conditionally disabling submit button |      ✅     |       ❌      |
+| Changing one input based on another   |      ✅     |       ❌      |
+| Multiple inputs for one piece of data |      ✅     |       ❌      |
+| Dynamically generated inputs          |      ✅     |       ❌      |
+
+---
+
+## Demo Time!
+
+note: ./advancedTopics/examples/advanced-patterns/src/components/ControlledUncontrolledExample
+
+---
+
+### Questions?
+
+___
