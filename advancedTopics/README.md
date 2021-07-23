@@ -428,7 +428,7 @@ note: advancedTopics/examples/customHooks contains the practical demo for this s
 
 ---
 
-## What are Higher Order Components?
+### What are Higher Order Components?
   - A Higher Order Component (HOC) is a technique for reusing component logic
 
   - A Higher Order Component is a function which takes a component and returns a new component
@@ -444,7 +444,7 @@ note: Can take more than one parameter, e.g. a config, another function, etc.
 
 ---
 
-## What are they used for?
+### What are they used for?
 
   - Abstracting out and sharing logic across Components
 
@@ -456,7 +456,7 @@ note: The Higher Order Component doesn't care about how the implementation is go
 
 ---
 
-## Enhancing a Component
+### Enhancing a Component
 
 One use of a Higher Order Component is to enhance a component with more functionality.
 
@@ -474,7 +474,7 @@ export const HelloWorldWithLoader = withLoader(HelloWorld);
 
 ---
 
-## Injecting into a Component
+### Injecting into a Component
 
 Another common use is to inject a component with functionality.
 
@@ -509,7 +509,7 @@ note: ./advancedTopics/examples/advanced-patterns/src/components/HigherOrderComp
 
 ---
 
-## What are Error Boundaries?
+### What are Error Boundaries?
 
  - Error Boundaries are components that catch JavaScript errors
  - They catch errors thrown anywhere in the child component tree
@@ -518,7 +518,7 @@ note: ./advancedTopics/examples/advanced-patterns/src/components/HigherOrderComp
 
 ---
 
-## What are they *not* used for?
+### What are they *not* used for?
 
   - Error Boundaries do not catch errors thrown:
     - By Event Handlers
@@ -532,7 +532,7 @@ note: Use regular try/catches for these
 
 ---
 
-## Defining an Error Boundary
+### Defining an Error Boundary
 
 An error boundary is a class component that defines one or both of the following lifecycle methods:
   - `static getDerivedStateFromError`
@@ -546,7 +546,7 @@ note: componentDidCatch gives you the opportunity to act on the error, e.g. log 
 
 ---
 
-## Using Error Boundaries
+### Using Error Boundaries
 
   - Error Boundaries can be nested
   - Errors thrown will be caught by the nearest parent Boundary
@@ -563,14 +563,14 @@ note: ./advancedTopics/examples/advanced-patterns/src/components/ErrorBoundaryEx
 
 ---
 
-## Minimising Re-renders
+### Minimising Re-renders
 
 1. Why minimise re-renders at all?
 2. How can you minimise re-renders?
 
 ---
 
-## Why minimise re-renders at all?
+### Why minimise re-renders at all?
 
 - React generates a representation of the UI and maintains this (the Virtual DOM).
 
@@ -582,7 +582,7 @@ note: generally this is not noticable but degraded performance can become notica
 
 ---
 
-## How can you minimise re-renders
+### How can you minimise re-renders
 
 1. Extend `React.PureComponent`
 2. Implement `shouldComponentUpdate`
@@ -595,7 +595,7 @@ note: React may choose to forget memoised values, i.e. to free up memory, so the
 
 ---
 
-## Extending React.PureComponent
+### Extending React.PureComponent
 
 ```jsx
 class MyComponent extends React.PureComponent {
@@ -614,7 +614,7 @@ note: Will also prevent re-renders of the child component tree
 
 ---
 
-## Implementing shouldComponentUpdate()
+### Implementing shouldComponentUpdate()
 
 ```jsx
 shouldComponentUpdate(nextProps, nextState)
@@ -634,7 +634,7 @@ note: should take care not to perform inefficient equality checks
 
 ---
 
-## Use `React.memo()` Higher Order Component
+### Use `React.memo()` Higher Order Component
 
 ```jsx
 const MemoComponent = React.memo(MyFunctionalComponent);
@@ -646,7 +646,7 @@ const MemoComponent = React.memo(MyFunctionalComponent);
 
 ---
 
-## Use `useMemo()` Hook
+### Use `useMemo()` Hook
 
 ```jsx
 const memoizedValue = useMemo(() => calculateValue(a), [a]);
@@ -668,7 +668,7 @@ note: ./advancedTopics/examples/advanced-patterns/src/components/MemoExample
 
 ---
 
-## Controlled vs Uncontrolled Components
+### Controlled vs Uncontrolled Components
 
 1. What is a Controlled Component?
 2. What is an Uncontrolled Component?
@@ -679,7 +679,7 @@ note: This is mainly concerned with DOM elements which maintain their own intern
 
 ---
 
-## What is a Controlled Component?
+### What is a Controlled Component?
 
   - Input component that takes it's `value` from props
   - Notifies changes through callbacks e.g. `onChange`
@@ -707,9 +707,9 @@ export const ControlledInput = () => {
 
 ---
 
-## What is an Uncontrolled Component?
+### What is an Uncontrolled Component?
 
-  - Akin to traditional HTML
+  - Similar to traditional HTML
   - Input component that manages it's own state internally
   - Query the DOM (via a ref) to get the current value
 
