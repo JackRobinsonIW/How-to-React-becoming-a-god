@@ -772,4 +772,9 @@ note: ./advancedTopics/examples/advanced-patterns/src/components/ControlledUncon
 
 ### Questions?
 
-___
+---
+
+### Useful Links
+
+- [React Advanced Training Topics](https://rangle.github.io/react-training/advanced/)
+- [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
